@@ -6,7 +6,7 @@ Ein Spring Boot Microservice zur zentralen Verwaltung von Bussen, Fahrplänen un
 
 * **Backend:** Java / Spring Boot
 * **API Dokumentation:** Swagger UI (OpenAPI)
-* **Datenbank:** H2 (In-Memory), PostgerSQL (Container)
+* **Datenbank:** H2 (In-Memory), PostgreSQL (Container)
 * **Containerisierung:** Docker & Docker Compose
 * **Build Tool:** Maven
 
