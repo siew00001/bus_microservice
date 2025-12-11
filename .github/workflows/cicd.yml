@@ -1,0 +1,33 @@
+name: CI_CD
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Java aufsetzen
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+          cache: maven
+      - name: Dependencies installieren
+        run: mvn dependency:resolve
+        
+      - name: Code kompilieren
+        run: mvn clean compile
+        
+      - name: Testen
+        run: mvn test
+        
+      - name: Artefakt erstellen
+        run: mvn package
+        
+      - name: Artifact hochladen
+        uses: actions/upload-artifact@v4
+        with: 
+          path: target/route-service-0.0.1-SNAPSHOT.jar
